@@ -18,7 +18,7 @@ public class NotifyService {
         this.notifyRepository = notifyRepository;
     }
 
-    public void connectUser(int userId, SseEmitter sseEmitter) {
+    public void setUserEmitter(int userId, SseEmitter sseEmitter) {
         connectedUser.put(userId, sseEmitter);
     }
 
@@ -37,5 +37,9 @@ public class NotifyService {
                 sseEmitter.completeWithError(ex);
             }
         }
+    }
+
+    public void removeEmitter(int userId) {
+        connectedUser.remove(userId);
     }
 }
