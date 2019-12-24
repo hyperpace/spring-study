@@ -5,8 +5,41 @@
     <title>Spring Boot Init</title>
 </head>
 <body>
-Hello World
-Spring Boot
+
+<div id="orderedBtn">
+    <input type="button" value="1">
+    <input type="button" value="2">
+    <input type="button" value="3">
+    <input type="button" value="4">
+    <input type="button" value="5">
+    <input type="button" value="6">
+    <input type="button" value="7">
+</div>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+
+    document.getElementById("orderedBtn").onclick = function(ev) {
+        let userId = ev.target.value;
+
+        axios({
+            method: 'get',
+            url: '/call/notify/' + userId
+        })
+            .then(function (response) {
+                console.log(userId + "가 호출함");
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log("호출 Error");
+            });
+    };
+
+    let source = new EventSource("/receive/notify/1");
+    source.onmessage = function(e) {
+        console.log("1사용자 호출받음");
+        console.log(e);
+    };
+</script>
 
 </body>
 </html>
