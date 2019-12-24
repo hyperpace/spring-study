@@ -4,14 +4,14 @@ import goozy.springstudy.repository.NotifyRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Service
 public class NotifyService {
 
-    private Map<Integer, SseEmitter> connectedUser = new HashMap<>();
+    private Map<Integer, SseEmitter> connectedUser = new ConcurrentHashMap<>();
     private NotifyRepository notifyRepository;
 
     public NotifyService(NotifyRepository notifyRepository) {

@@ -2,11 +2,15 @@ package goozy.springstudy.repository;
 
 import org.springframework.stereotype.Repository;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Repository
 public class NotifyRepository {
-    private static Map<Integer, List<Integer>> notifies = new HashMap<>();
+    private static Map<Integer, List<Integer>> notifies = new ConcurrentHashMap<>();
 
     static {
         notifies.put(1, Arrays.asList(2, 3, 5, 7));
