@@ -8,4 +8,4 @@
   - [Github](https://github.com/hyperpace/spring-study/tree/study/integration-seperate)
   - [내용정리](https://goozy.tistory.com/4)
 - Thread Safe
-  - [Github](https://github.com/hyperpace/spring-study/tree/study/integration-seperate)
+  - [Github](https://github.com/hyperpace/spring-study/tree/study/sync)
