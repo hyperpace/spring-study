@@ -15,20 +15,27 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SequenceGeneratorTest {
 
+    private static int COUNT = 1000;
+
     @Test
     // Thread Safe 하지 않기 때문에 항상 동일한 결과가 나오지 않는다.
     public void givenUnsafeSequenceGenerator_whenRaceCondition_thenUnexpectedBehavior() throws Exception {
-        int count = 1000;
-        Set<Integer> uniqueSequences = getUniqueSequences(new SequenceGenerator(), count);
-        assertNotEquals(count, uniqueSequences.size());
+        Set<Integer> uniqueSequences = getUniqueSequences(new SequenceGenerator(), COUNT);
+        assertNotEquals(COUNT, uniqueSequences.size());
     }
 
     @Test
     public void givenSequenceGeneratorUsingMonitor_whenRaceCondition_thenSuccess() throws Exception {
-        int count = 1000;
-        Set<Integer> uniqueSequences = getUniqueSequences(new SequenceGeneratorUsingMonitor(), count);
-        assertEquals(count, uniqueSequences.size());
+        Set<Integer> uniqueSequences = getUniqueSequences(new SequenceGeneratorUsingMonitor(), COUNT);
+        assertEquals(COUNT, uniqueSequences.size());
     }
+
+    @Test
+    public void givenSequenceGeneratorUsingSynchronizedMethod_whenRaceCondition_thenSuccess() throws Exception {
+        Set<Integer> uniqueSequences = getUniqueSequences(new SequenceGeneratorUsingSynchronizedMethod(), COUNT);
+        assertEquals(COUNT, uniqueSequences.size());
+    }
+
 
     private Set<Integer> getUniqueSequences(SequenceGenerator generator, int count) throws Exception {
         ExecutorService executor = Executors.newFixedThreadPool(3);
