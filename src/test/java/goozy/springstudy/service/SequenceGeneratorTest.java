@@ -11,7 +11,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class SequenceGeneratorTest {
 
@@ -40,6 +41,13 @@ class SequenceGeneratorTest {
     public void givenSequenceGeneratorUsingSynchronizedBlock_whenRaceCondition_thenSuccess() throws Exception {
         Set<Integer> uniqueSequences = getUniqueSequences(new SequenceGeneratorUsingSynchronizedBlock(), COUNT);
         assertEquals(COUNT, uniqueSequences.size());
+    }
+
+    @Test
+    public void givenSequenceGeneratorUsingReentrantLock_whenRaceCondition_thenSuccess() throws Exception {
+        int count = 1000;
+        Set<Integer> uniqueSequences = getUniqueSequences(new SequenceGeneratorUsingReentrantLock(), count);
+        assertEquals(count, uniqueSequences.size());
     }
 
     private Set<Integer> getUniqueSequences(SequenceGenerator generator, int count) throws Exception {
