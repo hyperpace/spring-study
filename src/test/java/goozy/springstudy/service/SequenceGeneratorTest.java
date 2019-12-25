@@ -36,6 +36,11 @@ class SequenceGeneratorTest {
         assertEquals(COUNT, uniqueSequences.size());
     }
 
+    @Test
+    public void givenSequenceGeneratorUsingSynchronizedBlock_whenRaceCondition_thenSuccess() throws Exception {
+        Set<Integer> uniqueSequences = getUniqueSequences(new SequenceGeneratorUsingSynchronizedBlock(), COUNT);
+        assertEquals(COUNT, uniqueSequences.size());
+    }
 
     private Set<Integer> getUniqueSequences(SequenceGenerator generator, int count) throws Exception {
         ExecutorService executor = Executors.newFixedThreadPool(3);
