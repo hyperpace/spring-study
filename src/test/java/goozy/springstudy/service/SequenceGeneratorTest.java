@@ -22,7 +22,14 @@ class SequenceGeneratorTest {
         Set<Integer> uniqueSequences = getUniqueSequences(new SequenceGenerator(), count);
         assertNotEquals(count, uniqueSequences.size());
     }
-    
+
+    @Test
+    public void givenSequenceGeneratorUsingMonitor_whenRaceCondition_thenSuccess() throws Exception {
+        int count = 1000;
+        Set<Integer> uniqueSequences = getUniqueSequences(new SequenceGeneratorUsingMonitor(), count);
+        assertEquals(count, uniqueSequences.size());
+    }
+
     private Set<Integer> getUniqueSequences(SequenceGenerator generator, int count) throws Exception {
         ExecutorService executor = Executors.newFixedThreadPool(3);
         Set<Integer> uniqueSequences = new LinkedHashSet<>();
