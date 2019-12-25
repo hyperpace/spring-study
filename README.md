@@ -1,5 +1,5 @@
 # Spring-Study
-### Spring을 사용하다가 학습한 내용을 기록하는 저장소입니다.
+### Spring을 사용하면서 학습한 내용을 기록하는 저장소입니다.
 
 - SSE 학습
   - [Github](https://github.com/hyperpace/spring-study/tree/study/sse)
