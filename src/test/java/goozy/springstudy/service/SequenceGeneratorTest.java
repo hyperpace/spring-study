@@ -45,9 +45,14 @@ class SequenceGeneratorTest {
 
     @Test
     public void givenSequenceGeneratorUsingReentrantLock_whenRaceCondition_thenSuccess() throws Exception {
-        int count = 1000;
-        Set<Integer> uniqueSequences = getUniqueSequences(new SequenceGeneratorUsingReentrantLock(), count);
-        assertEquals(count, uniqueSequences.size());
+        Set<Integer> uniqueSequences = getUniqueSequences(new SequenceGeneratorUsingReentrantLock(), COUNT);
+        assertEquals(COUNT, uniqueSequences.size());
+    }
+
+    @Test
+    public void givenSequenceGeneratorUsingSemaphore_whenRaceCondition_thenSuccess() throws Exception {
+        Set<Integer> uniqueSequences = getUniqueSequences(new SequenceGeneratorUsingSemaphore(), COUNT);
+        assertEquals(COUNT, uniqueSequences.size());
     }
 
     private Set<Integer> getUniqueSequences(SequenceGenerator generator, int count) throws Exception {
