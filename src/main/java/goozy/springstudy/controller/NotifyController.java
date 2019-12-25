@@ -23,7 +23,7 @@ public class NotifyController {
 
     @GetMapping("/receive/notify/{userId}")
     public SseEmitter receiveNotify(@PathVariable("userId") int userId) {
-        SseEmitter sseEmitter = new SseEmitter(60L * 60L * 60L);
+        SseEmitter sseEmitter = new SseEmitter(1000L * 60L * 15L);
 
         sseEmitter.onCompletion(() -> {
             notifyService.removeEmitter(userId);
