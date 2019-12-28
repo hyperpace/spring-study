@@ -9,3 +9,4 @@
   - [내용정리](https://goozy.tistory.com/4)
 - Thread Safe
   - [Github](https://github.com/hyperpace/spring-study/tree/study/sync)
+  - [내용정리](https://blog.goozy.net/6)
