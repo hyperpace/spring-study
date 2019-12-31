@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="bookService"
-          class="goozy.springstudy.BookService">
-        <property name="bookRepository" ref="bookRepository"></property>
-    </bean>
-
-    <bean id="bookRepository"
-          class="goozy.springstudy.BookRepository"/>
+    <context:component-scan base-package="goozy.springstudy"/>
 
 </beans>
