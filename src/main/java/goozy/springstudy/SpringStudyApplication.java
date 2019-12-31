@@ -16,6 +16,6 @@ public class SpringStudyApplication {
         System.out.println(Arrays.toString(beanDefinitionNames));
 
         BookService bookService = (BookService) applicationContext.getBean("bookService");
-        System.out.println(Objects.nonNull(bookService.bookRepository));
+        System.out.println(Objects.nonNull(bookService.getBookRepository()));
     }
 }
