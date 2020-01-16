@@ -9,7 +9,7 @@
   - [내용정리](https://goozy.tistory.com/4)
 - Thread Safe
   - [Github](https://github.com/hyperpace/spring-study/tree/study/sync)
-  - [내용정리](https://blog.goozy.net/6)
+  - [내용정리](https://www.goozy.net/6)
 - IoC 컨테이너 ApplicationContext
   - [Github](https://github.com/hyperpace/spring-study/tree/study/spring-setting-beans)
   - [내용정리](https://www.goozy.net/11)
